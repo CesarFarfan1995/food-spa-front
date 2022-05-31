@@ -1,0 +1,31 @@
+<div class="container mt-5 mb-5">
+    <div class="row">
+        <div class="col-lg-6" *ngIf="foodData">
+            <a routerLink="../../menu" class="btn btn-sm btn-dark mb-3">Back</a>
+            <img src="{{foodData.img}} " width="100%" >
+            <h1 class="mt-3">{{foodData.name}}</h1>
+            <p>{{foodData.details}}</p>
+            <p>{{foodData.price | currency}}</p>
+        </div>
+
+        <div *ngIf="isLogin()  | async; else notRegister" class="col-lg-6">
+            <h1>Enter Your Details</h1>
+            <form>
+                <input type="text" class="form-control mt-2 mb-2" placeholder="Enter Your Full Name">
+                <input type="text" class="form-control mt-2 mb-2" placeholder="Enter Your Mobile Number">
+                <textarea class="form-control mt-2 mb-2" placeholder="Enter Your Address"></textarea>
+                <button class=" btn btn-md btn-dark mt-3">Place Order</button>
+
+            </form>
+            
+        </div>
+        <ng-template #notRegister>
+         <div class="col-lg-6 mt-5">
+            <h1>
+                You must register to be able to order food
+            </h1>
+        </div>
+        </ng-template>
+
+    </div>
+</div>

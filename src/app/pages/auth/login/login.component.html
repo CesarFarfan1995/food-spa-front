@@ -1,0 +1,41 @@
+<!-- <div class="container mt-5 ">
+    <form class="col-lg-12">
+
+            <div class="col-lg-4 offset-lg-4  mt-4 mb-2" >
+                <input type="text" class="form-control" placeholder="Enter Your Email">
+            </div>
+            <div class="col-lg-4 offset-lg-4  mt-4 mb-2" >
+                <input type="text" class="form-control" placeholder="Enter Your Password ">
+            </div>
+            <div class="col-lg-6 offset-lg-4  mt-2 mb-2">
+                <button class="btn btn-md btn-dark">Submit</button>
+            </div>
+      
+      </form>
+</div> -->
+
+<div class="container">
+    <div class="row">
+        <div class="col-6 offset-3">
+            <h1>Login</h1>
+            <form (ngSubmit)="onSubmit(loginForm.value)" #loginForm="ngForm">
+
+                <div class="mb-4">
+                    <label for="email" class="form-label" >Email</label>
+                    <input type="text" class="form-control" id="email" name="email" ngModel required>
+                    <div class="invalid-feedback">This field is required</div>
+                </div>
+                <div class="mb-4">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" class="form-control" id="password" name="password" ngModel required>
+                    <div class="invalid-feedback">This field is required</div>
+                </div>
+                <div>
+                    <button type="submit" class="btn btn-dark">Login</button>
+                </div>
+
+            </form>
+        </div>
+        <div class="col-3"></div>
+    </div>
+</div>

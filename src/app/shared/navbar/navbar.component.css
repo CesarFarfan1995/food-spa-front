@@ -1,0 +1,14 @@
+/* .bg-light .navbar-nav .nav-link {
+    color: var(--primary-color) !important;
+} */
+
+
+.activate-link {
+    color: var(--primary-color) !important;
+    /* font-weight: bold; */
+    text-decoration: underline;
+    
+    
+}
+
+

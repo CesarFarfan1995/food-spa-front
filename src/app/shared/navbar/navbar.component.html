@@ -1,0 +1,46 @@
+<nav class="navbar navbar-expand-lg bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" >FoodAndTaste</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div  class="collapse navbar-collapse" id="navbarNav">
+        <ul *ngIf="isLogin() | async; else normalMenu" class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link active" routerLink="" routerLinkActive="activate-link" [routerLinkActiveOptions]="{exact:true}" >Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="menu" routerLinkActive="activate-link">Menu</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " routerLink="profile" routerLinkActive="activate-link">Welcome {{user.firstName}}</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " routerLink="logout" (click)="onLogout()"   routerLinkActive="activate-link">Logout</a>
+          </li>
+        </ul>
+      </div>
+      <ng-template  #normalMenu>
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link active" routerLink="" routerLinkActive="activate-link" [routerLinkActiveOptions]="{exact:true}" >Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="menu" routerLinkActive="activate-link">Menu</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="contact" routerLinkActive="activate-link">Contact</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="auth/register" routerLinkActive="activate-link">Register</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="auth/login" routerLinkActive="activate-link">login</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " routerLink="about" routerLinkActive="activate-link">About</a>
+            </li>
+          </ul>
+      </ng-template>
+    </div>
+  </nav>

@@ -1,0 +1,9 @@
+<div class="container mt-5">
+    <div *ngIf="isLogin() | async"  class=" offset-5 col-lg-12">
+        <h1>My Profile</h1>
+        <p><span class="bold-text">Name: </span>{{user.firstName}}</p>
+        <p><span class="bold-text">Last Name: </span>{{user.lastName}}</p>
+        <p><span class="bold-text">Email: </span>{{user.email}}</p>
+        <p><span class="bold-text">Phone: </span>{{user.phone}}</p>
+    </div>
+</div>
