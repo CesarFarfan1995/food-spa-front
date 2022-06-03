@@ -16,9 +16,10 @@ export class AuthService {
 
 
   private loggedIn = new BehaviorSubject<boolean>(false);
+  private isAdmin = new BehaviorSubject<boolean>(false);
 
   private subscription:Subscription = new Subscription();
-tempUser!:UserInterface
+   userLogin!:LoginInterface
 
   constructor(private readonly http:HttpClient, private cookieSvc:CookieService, private router: Router) { 
     this.checkToken()
@@ -27,17 +28,23 @@ tempUser!:UserInterface
   get isLogged(): Observable<boolean>{
     return this.loggedIn.asObservable()
   }
-  // get userinfo():Observable<UserInterface>{
-  //   return this.user.asObservable()
-  // }
+
+  get admin(): Observable<boolean>{
+    return this.isAdmin.asObservable()
+  }
 
   loginUser(userData:LoginInterface):any{
     this.subscription.add(
-    this.http.post<UserData>(`${environment.apiUrl}auth/login`, userData).subscribe(({token,user}) =>{
+    this.http.post<UserData>(`${environment.apiUrl}auth/login`, userData).subscribe(({token,user, roles}) =>{
     this.cookieSvc.set('token', token)
     this.loggedIn.next(true)
+    const role = roles.filter(value => value === 'admin')
     user = {...user, phone:user.phone.toString()}
     this.cookieSvc.set('user', JSON.stringify(user))
+    console.log(role)
+    if(role.length > 0){
+      this.isAdmin.next(true)
+    }
     if(user && token){
       
       this.router.navigate(['/'])
@@ -67,6 +74,7 @@ tempUser!:UserInterface
     this.cookieSvc.delete('token')
     this.cookieSvc.delete('user')
     this.loggedIn.next(false)
+    this.isAdmin.next(false)
     this.router.navigate(['/'])
 
 
@@ -74,6 +82,20 @@ tempUser!:UserInterface
 
   destroySub():void{
     this.subscription.unsubscribe()
+  }
+
+  registerUser(userData:UserInterface){
+
+   
+   this.http.post<LoginInterface>(`${environment.apiUrl}auth/register`, userData).subscribe((user) => {
+     const dataUser = { email: user.email, password: user.password };
+     this.userLogin = dataUser;
+
+
+   })
+
+  
+
   }
 
 

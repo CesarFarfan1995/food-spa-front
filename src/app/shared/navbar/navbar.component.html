@@ -12,13 +12,24 @@
           <li class="nav-item">
             <a class="nav-link" routerLink="menu" routerLinkActive="activate-link">Menu</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link " routerLink="profile" routerLinkActive="activate-link">Welcome {{user.firstName}}</a>
+          <li *ngIf="isAdmin | async; else userMenu" class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+             Welcome {{user.firstName}}
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" routerLink="admin" >Products</a></li>
+              <li><a class="dropdown-item" routerLink="profile" >profile</a></li>
+            </ul>
           </li>
+          <ng-template #userMenu >
+            <li class="nav-item">
+              <a class="nav-link" routerLink="profile" routerLinkActive="activate-link">Welcome {{user.firstName}}</a>
+            </li>
+          </ng-template>
           <li class="nav-item">
             <a class="nav-link " routerLink="logout" (click)="onLogout()"   routerLinkActive="activate-link">Logout</a>
           </li>
-        </ul>
+        </ul> 
       </div>
       <ng-template  #normalMenu>
           <ul class="navbar-nav ms-auto">

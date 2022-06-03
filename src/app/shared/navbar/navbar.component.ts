@@ -12,8 +12,10 @@ export class NavbarComponent implements OnInit, OnDestroy {
 
   
 
-  constructor(private authSvc:AuthService, private cookieSvc:CookieService) { }
+  constructor(private authSvc:AuthService, private cookieSvc:CookieService) {}
   user!:UserInterface 
+
+  isAdmin = this.authSvc.admin;
    
   ngOnInit(): void {
    

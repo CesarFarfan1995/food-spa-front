@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AboutComponent } from './pages/about/about.component';
+import { AdminDashboardComponent } from './pages/admin-dashboard/admin-dashboard.component';
+import { EditProductComponent } from './pages/admin-dashboard/edit-product/edit-product.component';
 import { LoginComponent } from './pages/auth/login/login.component';
 import { RegisterComponent } from './pages/auth/register/register.component';
 import { ContactComponent } from './pages/contact/contact.component';
@@ -36,6 +38,14 @@ const routes: Routes = [
     component: RegisterComponent
   },
   {
+    path:'admin',
+    component: AdminDashboardComponent
+  },
+  {
+    path:'admin/edit',
+    component: EditProductComponent
+  },
+  {
     path:'auth/login',
     component: LoginComponent,
     canActivate:[CheckloginGuard]
@@ -44,6 +54,7 @@ const routes: Routes = [
     path:'profile',
     component: UserProfileComponent
   },
+
   {
     path:'**',
     redirectTo:''

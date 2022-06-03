@@ -1,0 +1,22 @@
+<form  (ngSubmit)="onSave()" [formGroup]="productForm"  class="mt-5 col-md-8 offset-md-2"  >
+    <h2 class="text-center">Edit</h2>
+    <div class="form row">
+        <div class="form-group col-md-12 mt-2  mb-2" >
+            <input type="text" placeholder="Img url"  class="form-control" formControlName="img" required >
+        </div>
+    </div>
+    <div class="row">
+        <div class="form-group col-md-6 mt-2  mb-2" >
+            <input type="text" placeholder="Name"  class="form-control" formControlName="name" required >
+        </div>
+        <div class="form-group col-md-6 mt-2  mb-2">
+            <input type="text" placeholder="Details"  class="form-control" formControlName="details" required >
+        </div>
+    </div>
+    <div class="row">
+        <div class="form-group col-md-6 mt-2  mb-2">
+            <input type="number" placeholder="Price"  class="form-control " formControlName="price" required>
+        </div>
+    </div>
+    <button type="submit"  class=" btn bg-dark  text-light mt-3">Register</button>
+</form>

@@ -6,7 +6,8 @@ export interface UserData {
         address:string,
         phone:number | string
     },
-    token:string
+    token:string,
+    roles:Array<string>
 }
 
 export interface LoginInterface {
@@ -20,6 +21,7 @@ export interface UserInterface {
         firstName:string,
         lastName:string,
         address:string,
-        phone:number | string
+        phone:number | string,
+        password?:string
     
 }

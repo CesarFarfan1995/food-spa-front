@@ -16,6 +16,9 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptor } from './pages/auth/token.interceptor';
 import { CookieService } from 'ngx-cookie-service';
 import { UserProfileComponent } from './pages/user-profile/user-profile.component';
+import { AdminDashboardComponent } from './pages/admin-dashboard/admin-dashboard.component';
+import { EditProductComponent } from './pages/admin-dashboard/edit-product/edit-product.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -28,14 +31,17 @@ import { UserProfileComponent } from './pages/user-profile/user-profile.componen
     AboutComponent,
     ContactComponent,
     MenuPageComponent,
-    UserProfileComponent,  
+    UserProfileComponent,
+    AdminDashboardComponent,
+    EditProductComponent,  
     
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     AuthModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true }, CookieService],
   bootstrap: [AppComponent]
